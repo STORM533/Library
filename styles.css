@@ -1,0 +1,14 @@
+body{
+    background-color: rgba(20, 255, 185, 0.795);
+     
+}
+.createBook{
+    width: 150px;
+    height: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: rgba(218, 32, 94, 0.87);
+    background-color: rgb(35, 233, 111);
+    border-style: ridge ;
+    border-color: aquamarine;
+}
