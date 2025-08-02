@@ -18,15 +18,11 @@ function addBookToLibrary() {
     const form3  = document.querySelector("#pages").value;
     const form4  = document.querySelector("#status").value;
     const theBook  = new Book(form1 , form2 , form3 , form4);
-    console.log(theBook.info());
+    console.log(theBook);
     myLibrary.push(theBook);
     showLibrary();
 
 }
-
-console.log(myLibrary);
-
-
 function forms() {
     const dialog = document.querySelector("dialog");
     const showButton = document.querySelector("dialog + #btn");
@@ -67,6 +63,28 @@ function showLibrary(){
             myLibrary.splice(idx , 1);
             showLibrary();
         });
+    const statusSelect = document.createElement("select");
+    statusSelect.classList.add("dynamicStatus")
+    const option1 = document.createElement("option");
+    const option2 = document.createElement("option"); 
+    const option3 = document.createElement("option")
+    option1.value = "not-read";
+    option1.textContent = "NOT READ";
+    option2.value = "read";
+    option2.textContent = "READ COMPLETELY";
+    option3.value = "not-yet-read";
+    option3.textContent = "YET TO READ"  
+    statusSelect.appendChild(option1);
+    statusSelect.appendChild(option2);
+    statusSelect.appendChild(option3);
+  
+
+    statusSelect.addEventListener("change", (e) => {
+      theBook.status = e.target.value;
+      // optionally update display immediately; we can re-render:
+      showLibrary();
+    });
+        li.appendChild(statusSelect);
         li.appendChild(removebtn);
         list.appendChild(li);
     });
