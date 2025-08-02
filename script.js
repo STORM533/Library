@@ -63,21 +63,19 @@ function showLibrary(){
             myLibrary.splice(idx , 1);
             showLibrary();
         });
-    const statusSelect = document.createElement("select");
-    statusSelect.classList.add("dynamicStatus")
-    const option1 = document.createElement("option");
-    const option2 = document.createElement("option"); 
-    const option3 = document.createElement("option")
-    option1.value = "not-read";
-    option1.textContent = "NOT READ";
-    option2.value = "read";
-    option2.textContent = "READ COMPLETELY";
-    option3.value = "not-yet-read";
-    option3.textContent = "YET TO READ"  
-    statusSelect.appendChild(option1);
-    statusSelect.appendChild(option2);
-    statusSelect.appendChild(option3);
-  
+   const statusSelect = document.createElement("select");
+    ["not-read", "read", "yet-to-read"].forEach((val) => {
+      const opt = document.createElement("option");
+      opt.value = val;
+      opt.textContent =
+        val === "not-read"
+          ? "NOT READ"
+          : val === "read"
+          ? "READ COMPLETELY"
+          : "YET TO READ";
+      if (theBook.status === val) opt.selected = true;
+      statusSelect.appendChild(opt);
+    });
 
     statusSelect.addEventListener("change", (e) => {
       theBook.status = e.target.value;
@@ -91,4 +89,7 @@ function showLibrary(){
 }
 showLibrary();
 forms();
+
+
+
 
