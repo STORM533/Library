@@ -56,14 +56,26 @@ function showLibrary(){
     list.innerHTML="";
     myLibrary.forEach((theBook , idx) =>{
         const li = document.createElement("li");
+        li.classList.add("lists");
+        li.style.fontSize ="30px";
+        
         li.textContent = theBook.info();
         const removebtn = document.createElement("button");
+        removebtn.style.borderRadius = "20px";
+        removebtn.style.height = "30px";
+        removebtn.style.width = "90px";
         removebtn.textContent = "remove";
         removebtn.addEventListener("click" , () =>{
             myLibrary.splice(idx , 1);
             showLibrary();
         });
    const statusSelect = document.createElement("select");
+   statusSelect.style.marginLeft="10px";
+   statusSelect.style.marginRight = "10px";
+   statusSelect.style.width  = "150px";
+   statusSelect.style.height = "30px";
+   statusSelect.style.borderRadius = "20px";
+   statusSelect.style.borderColor = "aquamarine";
     ["not-read", "read", "yet-to-read"].forEach((val) => {
       const opt = document.createElement("option");
       opt.value = val;

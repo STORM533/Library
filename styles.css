@@ -14,3 +14,34 @@ body{
     border-style: ridge ;
     border-color: aquamarine;
 }
+dialog{
+    width: 500px;
+    height: 500px;
+}
+#myForm div{
+    width: 100px;
+    height: 100px;
+    font-size: 30px;
+}
+input{
+    width: 200px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: aqua;
+}
+select{
+    width: 200px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: aqua;
+}
+#button{
+    border-radius: 20px;
+    width: 70px;
+    height: 50px;
+    border-color: aqua;
+    
+}
+#lists{
+font-size: 50px;
+}
