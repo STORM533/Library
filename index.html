@@ -8,6 +8,35 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container"></div>
+    <div class="container">
+        <dialog>
+            <button autofocus>close</button>
+            <form id="myForm" action="" method="post">
+                <div>
+                    <label for="names">Name</label>
+                    <input type="text" name="names" id="names">
+                </div>
+                <div>
+                    <label for="author">author</label>
+                    <input type="text" name="author" id="author">
+                </div>
+                <div>
+                    <label for="pages">pages</label>
+                    <input type="number" name="pages" id="pages">
+                </div>
+                <div>
+                    <label for="status">status</label>
+                    <select name="status" id="status">
+                        <option value="not-read">NOT READ</option>
+                        <option value="read">READ COMPLETELY</option>
+                        <option value="yet-to-read">YET TO READ</option>
+                    </select>
+                </div>
+                <button type="submit" id="button">ADD</button>
+            </form>
+        </dialog>
+        <button id="btn">Add Book</button>
+    </div>
+
 </body>
 </html>

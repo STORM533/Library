@@ -8,36 +8,54 @@ function Book(name , author , pages , status){
     this.pages = pages;
     this.status = status;
     this.info = function() {
-        return this.name + ' by ' + this.author+ ', '  + this.pages  + ' pages .' ;
+        return this.name + ' by ' + this.author+ ', '  + this.pages  + ' pages . status: ' + this.status;
     };
 }
 
-const theHobbit = new Book('adasd','adadaw','adasdad','adwasda');
-const theRedeem = new Book('asdasd','awdasd','adasda','adasd');
-
 function addBookToLibrary() {
     myLibrary.push(theHobbit.info());
-    myLibrary.push(theRedeem.info());
+
 }
-console.log(addBookToLibrary());
+
 console.log(myLibrary);
-console.log(theHobbit.info());
-console.log(theRedeem.info());
 
-function createBooks(){
-    
+
+function details(){
+    for(let i = 0; i<10; i++) {
+            const form1 = document.querySelector("#names").value;
+            const form2 = document.querySelector("#author").value;
+            const form3  = document.querySelector("#pages").value;
+            const form4  = document.querySelector("#status").value;
+            const theBook  = new Book(form1 , form2 , form3 , form4);
+            console.log(theBook.info());
+            myLibrary.push(theBook.info());
+    }
+
 }
-const container = document.querySelector(".container");
-const books = document.createElement("div");
-books.classList.add("books");
-books.textContent= myLibrary[0];
-container.appendChild(books);
-const button = document.createElement("button");
-button.classList.add("createBook");
-button.textContent  ="ADD BOOKS";
-    button.addEventListener("click" ,() =>{
 
+function forms() {
+    const dialog = document.querySelector("dialog");
+    const showButton = document.querySelector("dialog + #btn");
+    const closeButton = document.querySelector("dialog button");
+    const btn = document.querySelector("#button");
+    const form  = document.querySelector("#myForm")
+    btn.addEventListener("click" , () =>{
+        details();              
+        dialog.close();
+        form.reset();
     });
-    container.appendChild(button);
-    
+// "Show the dialog" button opens the dialog modally
+    showButton.addEventListener("click", () => {
+        dialog.showModal();
+    });
+
+// "Close" button closes the dialog
+    closeButton.addEventListener("click", () => {
+        dialog.close();
+    });
+    form.addEventListener('submit',(event) => {
+        event.preventDefault();
+    });
+}
+forms();
 
