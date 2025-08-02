@@ -13,25 +13,19 @@ function Book(name , author , pages , status){
 }
 
 function addBookToLibrary() {
-    myLibrary.push(theHobbit.info());
+    const form1 = document.querySelector("#names").value;
+    const form2 = document.querySelector("#author").value;
+    const form3  = document.querySelector("#pages").value;
+    const form4  = document.querySelector("#status").value;
+    const theBook  = new Book(form1 , form2 , form3 , form4);
+    console.log(theBook.info());
+    myLibrary.push(theBook);
+    showLibrary();
 
 }
 
 console.log(myLibrary);
 
-
-function details(){
-    for(let i = 0; i<10; i++) {
-            const form1 = document.querySelector("#names").value;
-            const form2 = document.querySelector("#author").value;
-            const form3  = document.querySelector("#pages").value;
-            const form4  = document.querySelector("#status").value;
-            const theBook  = new Book(form1 , form2 , form3 , form4);
-            console.log(theBook.info());
-            myLibrary.push(theBook.info());
-    }
-
-}
 
 function forms() {
     const dialog = document.querySelector("dialog");
@@ -40,9 +34,9 @@ function forms() {
     const btn = document.querySelector("#button");
     const form  = document.querySelector("#myForm")
     btn.addEventListener("click" , () =>{
-        details();              
+                     
         dialog.close();
-        form.reset();
+        
     });
 // "Show the dialog" button opens the dialog modally
     showButton.addEventListener("click", () => {
@@ -55,7 +49,28 @@ function forms() {
     });
     form.addEventListener('submit',(event) => {
         event.preventDefault();
+        addBookToLibrary();
+        form.reset();
+
     });
 }
+function showLibrary(){
+    
+    const list = document.querySelector("#list");
+    list.innerHTML="";
+    myLibrary.forEach((theBook , idx) =>{
+        const li = document.createElement("li");
+        li.textContent = theBook.info();
+        const removebtn = document.createElement("button");
+        removebtn.textContent = "remove";
+        removebtn.addEventListener("click" , () =>{
+            myLibrary.splice(idx , 1);
+            showLibrary();
+        });
+        li.appendChild(removebtn);
+        list.appendChild(li);
+    });
+}
+showLibrary();
 forms();
 
